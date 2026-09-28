@@ -1,0 +1,42 @@
+﻿@model List<practical_6dotnet.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+</head>
+<body>
+    <div> 
+        <h2>Product Catalog</h2>
+
+        <table border="1" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Category</td>
+                        <td>@product.Price</td>
+                        <td>@product.Description</td>
+                    </tr>
+                }
+            </tbody>
+</div>
+</body>
+</html>
