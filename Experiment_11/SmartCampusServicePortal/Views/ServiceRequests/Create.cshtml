@@ -1,0 +1,67 @@
+﻿@model SmartCampusServicePortal.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Submit Request";
+}
+
+<div class="content-card">
+    <h3>Submit Campus Service Request</h3>
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="StudentId" class="form-label">
+                Select Student
+            </label>
+
+            <select asp-for="StudentId"
+                    asp-items="ViewBag.Students"
+                    class="form-select">
+                <option value="">Select Student</option>
+            </select>
+
+            <span asp-validation-for="StudentId"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">
+                Request Title
+            </label>
+
+            <input asp-for="Title" class="form-control" />
+
+            <span asp-validation-for="Title"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">
+                Description
+            </label>
+
+            <textarea asp-for="Description"
+                      class="form-control"
+                      rows="5"></textarea>
+
+            <span asp-validation-for="Description"
+                  class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Submit Request
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

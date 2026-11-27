@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    var stats = ViewBag.Stats;
+}
+
+<div class="welcome">
+    <h1>Welcome to Smart Campus!</h1>
+    <p>Manage students, campus services, notices and events from one place.</p>
+</div>
+
+<div class="row g-4 mt-2">
+
+    <div class="col-md-4">
+        <div class="dashboard-card blue">
+            <h5>Total Students</h5>
+            <h2>@stats.TotalStudents</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="dashboard-card green">
+            <h5>Total Service Requests</h5>
+            <h2>@stats.TotalRequests</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="dashboard-card orange">
+            <h5>Pending Requests</h5>
+            <h2>@stats.PendingRequests</h2>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="dashboard-card purple">
+            <h5>Campus Notices</h5>
+            <h2>@stats.TotalNotices</h2>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="dashboard-card blue">
+            <h5>Campus Events</h5>
+            <h2>@stats.TotalEvents</h2>
+        </div>
+    </div>
+
+</div>
+
+<div class="content-card mt-4">
+    <h4>Quick Actions</h4>
+
+    <a asp-controller="Students" asp-action="Create"
+       class="btn btn-primary">Add Student</a>
+
+    <a asp-controller="ServiceRequests" asp-action="Create"
+       class="btn btn-success">Submit Request</a>
+
+    <a asp-controller="Notices" asp-action="Index"
+       class="btn btn-warning">View Notices</a>
+
+    <a asp-controller="Events" asp-action="Index"
+       class="btn btn-info">View Events</a>
+</div>

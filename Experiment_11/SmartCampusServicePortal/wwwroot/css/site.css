@@ -1,0 +1,169 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f3f6fc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #1e293b;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    padding: 28px 18px;
+    background: #172554;
+    color: white;
+    overflow-y: auto;
+}
+
+    .sidebar h3 {
+        text-align: center;
+        font-size: 23px;
+        font-weight: 700;
+        margin-bottom: 35px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 13px 15px;
+        margin-bottom: 9px;
+        color: #dbeafe;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+        .sidebar a:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+.main-content {
+    margin-left: 250px;
+    padding: 25px;
+    min-height: 100vh;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.05);
+}
+
+    .topbar h4 {
+        margin: 0;
+        font-weight: 700;
+    }
+
+.page-content {
+    margin-top: 25px;
+}
+
+.welcome {
+    padding: 40px;
+    border-radius: 15px;
+    background: linear-gradient(120deg, #1d4ed8, #6366f1);
+    color: white;
+}
+
+    .welcome h1 {
+        font-weight: 700;
+    }
+
+.dashboard-card {
+    padding: 28px;
+    border-radius: 14px;
+    color: white;
+    min-height: 145px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+    .dashboard-card h2 {
+        font-size: 34px;
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+.blue {
+    background: #2563eb;
+}
+
+.green {
+    background: #16a34a;
+}
+
+.orange {
+    background: #ea580c;
+}
+
+.purple {
+    background: #7c3aed;
+}
+
+.content-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.05);
+}
+
+    .content-card h3 {
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+.table {
+    vertical-align: middle;
+}
+
+
+    .table thead th {
+        background-color: #2563EB;
+        color: white;
+        font-weight: 600;
+        padding: 14px;
+    }
+
+
+.form-control,
+.form-select {
+    padding: 11px;
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 7px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.sidebar a.active {
+    background: #2563eb;
+    color: white;
+}

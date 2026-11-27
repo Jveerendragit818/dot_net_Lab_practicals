@@ -1,0 +1,111 @@
+﻿@model IEnumerable<SmartCampusServicePortal.Models.ServiceRequest>
+
+@{
+    ViewData["Title"] = "Service Requests";
+}
+
+<div class="content-card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Campus Service Requests</h3>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + New Request
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Update Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+
+                        <td>@(item.Student?.Name ?? "Not assigned")</td>
+
+                        <td>@item.Title</td>
+
+                        <td>@item.Description</td>
+
+                        <td>
+                            @if (item.Status == "Completed")
+                            {
+                                <span class="badge bg-success">
+                                    @item.Status
+                                </span>
+                            }
+                            else if (item.Status == "In Progress")
+                            {
+                                <span class="badge bg-info text-dark">
+                                    @item.Status
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">
+                                    @item.Status
+                                </span>
+                            }
+                        </td>
+
+                        <td>
+                            @(item.CreatedAt?.ToString("dd-MM-yyyy") ?? "N/A")
+                        </td>
+
+                        <td>
+                            <form asp-action="UpdateStatus" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+
+                                <select name="status"
+                                        class="form-select form-select-sm mb-1">
+                                    <option value="Pending"
+                                            selected="@(item.Status == "Pending")">
+                                        Pending
+                                    </option>
+
+                                    <option value="In Progress"
+                                            selected="@(item.Status == "In Progress")">
+                                        In Progress
+                                    </option>
+
+                                    <option value="Completed"
+                                            selected="@(item.Status == "Completed")">
+                                        Completed
+                                    </option>
+                                </select>
+
+                                <button type="submit"
+                                        class="btn btn-sm btn-success">
+                                    Update
+                                </button>
+                            </form>
+
+                            <form asp-action="Delete"
+                                  asp-route-id="@item.Id"
+                                  method="post"
+                                  onsubmit="return confirm('Delete request?');">
+
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger mt-1">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

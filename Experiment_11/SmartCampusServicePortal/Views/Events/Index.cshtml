@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmartCampusServicePortal.Models.CampusEvent>
+
+@{
+    ViewData["Title"] = "Campus Events";
+}
+
+<h3 class="mb-4">Campus Events</h3>
+
+<div class="row g-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+            <div class="content-card">
+
+                <h4>@item.Title</h4>
+
+                <p>@item.Description</p>
+
+                <p>
+                    <strong>Location:</strong>
+                    @(item.Location ?? "Not specified")
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    @(item.EventDate?.ToString("dd MMM yyyy") ?? "Not scheduled")
+                </p>
+
+            </div>
+        </div>
+    }
+
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No campus events available.
+    </div>
+}
